@@ -4172,7 +4172,6 @@ contains
     integer :: n_libraries
     logical :: file_exists ! does mgxs.h5 exist?
     integer(HID_T) :: file_id
-    real(8), allocatable :: rev_energy_bins(:)
     character(len=MAX_WORD_LEN), allocatable :: names(:)
 
     ! Check if MGXS Library exists
@@ -4213,6 +4212,7 @@ contains
     end if
 
     ! First reverse the order of energy_groups
+    rev_energy_bins = energy_bins
     energy_bins = energy_bins(num_energy_groups + 1:1:-1)
 
     allocate(energy_bin_avg(num_energy_groups))
